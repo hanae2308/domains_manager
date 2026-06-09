@@ -1200,7 +1200,22 @@ hiuniversity.com	hiumail.com	Not affected	INCLUDE"></textarea>
         resultDiv.innerHTML = html;
     }
 
-    function copySPF() { const output = document.querySelector('#spfResult pre'); if (output) { navigator.clipboard.writeText(output.innerText); alert('Copied!'); } else { alert('No output'); } }
+    // MODIFIED: Removed alert, button shows "Copied!" temporarily
+    function copySPF() { 
+        const output = document.querySelector('#spfResult pre'); 
+        const btn = document.getElementById('copySpfBtn');
+        if (output && output.innerText.trim()) { 
+            navigator.clipboard.writeText(output.innerText); 
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => { btn.innerHTML = originalHtml; }, 1500);
+        } else { 
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-times"></i> No Data';
+            setTimeout(() => { btn.innerHTML = originalHtml; }, 1200);
+        } 
+    }
+
     function clearSPF() { document.getElementById('domainsInput').value = ''; document.getElementById('ipsInput').value = ''; document.getElementById('spfResult').innerHTML = ''; }
 
     function searchDomain() {
