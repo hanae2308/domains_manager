@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domains Manager - DNS Management Suite</title>
-    <!-- Favicon / Tab Icon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'%3E%3Cpath d='M20,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.1,4,20,4z M20,8l-8,5L4,8V6l8,5l8-5V8z'/%3E%3C/svg%3E">
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADJSURBVEhL7ZPBDYIwFEb/bgIn0A3oJriBbkA3oJvQDWAD3IBuYEcoIYUWwn8ak3gJSfs+vpf2AwAAAHhHfJxdyuv8kGZGSiH+Zy2IG1FnlAjEjcTWGfFGFvIh4o0s5EPEG1nIh4g3spAPEW9kIR8i3shCPkS8kYV8iHgjC/kQ8UYW8qF5Pj6le/P+kZbXzYVh8A9ixt2Ruv7zOJBx1O13EjE1kiDiClEZrmHkISLW4hJCfRdEqT9C/wUAAAAQ4AuI8iF0UYZiqgAAAABJRU5ErkJggg==">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -30,11 +28,7 @@
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -51,58 +45,15 @@
             z-index: 100;
         }
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 36px; height: 36px; background: var(--accent-gradient); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon i { font-size: 18px; color: white; }
+        .logo h1 { font-size: 1.25rem; font-weight: 600; color: white; letter-spacing: -0.3px; }
+        .logo p { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--accent-gradient);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon i {
-            font-size: 18px;
-            color: white;
-        }
-
-        .logo h1 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: white;
-            letter-spacing: -0.3px;
-        }
-
-        .logo p {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.6);
-        }
-
-        .tools-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 32px 24px;
-        }
-
+        .tools-container { max-width: 1400px; margin: 0 auto; padding: 32px 24px; }
         .tools-grid {
             display: flex;
             gap: 12px;
@@ -130,76 +81,20 @@
             align-items: center;
             gap: 10px;
         }
+        .tool-btn i { font-size: 1rem; }
+        .tool-btn:hover { background: #f1f5f9; color: var(--accent); }
+        .tool-btn.active { background: var(--accent-gradient); color: white; box-shadow: var(--shadow-md); }
 
-        .tool-btn i {
-            font-size: 1rem;
-        }
+        .main-card { background: var(--bg-card); border-radius: 24px; box-shadow: var(--shadow-xl); overflow: hidden; }
+        .card-header { padding: 24px 32px; border-bottom: 1px solid var(--border); background: #fafbff; }
+        .card-header h2 { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 12px; }
+        .card-header h2 i { color: var(--accent); font-size: 1.3rem; }
+        .card-body { padding: 32px; }
 
-        .tool-btn:hover {
-            background: #f1f5f9;
-            color: var(--accent);
-        }
-
-        .tool-btn.active {
-            background: var(--accent-gradient);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        .main-card {
-            background: var(--bg-card);
-            border-radius: 24px;
-            box-shadow: var(--shadow-xl);
-            overflow: hidden;
-        }
-
-        .card-header {
-            padding: 24px 32px;
-            border-bottom: 1px solid var(--border);
-            background: #fafbff;
-        }
-
-        .card-header h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .card-header h2 i {
-            color: var(--accent);
-            font-size: 1.3rem;
-        }
-
-        .card-body {
-            padding: 32px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-            font-size: 0.85rem;
-        }
-
-        .form-group label i {
-            margin-right: 8px;
-            color: var(--accent);
-        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; color: var(--text-primary); font-size: 0.85rem; }
+        .form-group label i { margin-right: 8px; color: var(--accent); }
 
         textarea, input, select {
             width: 100%;
@@ -211,26 +106,15 @@
             transition: all 0.2s ease;
             background: #fafbfc;
         }
-
         textarea:focus, input:focus, select:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
             background: white;
         }
+        textarea { resize: vertical; font-size: 12px; }
 
-        textarea {
-            resize: vertical;
-            font-size: 12px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-
+        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
         .btn {
             padding: 10px 20px;
             border-radius: 10px;
@@ -243,101 +127,26 @@
             align-items: center;
             gap: 8px;
         }
+        .btn-primary { background: var(--accent-gradient); color: white; }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-secondary { background: #f1f5f9; color: var(--text-secondary); }
+        .btn-secondary:hover { background: #e2e8f0; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-secondary); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: white;
-        }
+        .result-box { margin-top: 24px; background: #0f172a; border-radius: 16px; padding: 20px; overflow-x: auto; }
+        .result-box pre { color: #a5f3fc; font-family: 'Menlo', 'Monaco', monospace; font-size: 12px; white-space: pre-wrap; word-break: break-all; line-height: 1.5; }
 
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
+        .alert { padding: 12px 16px; border-radius: 12px; margin-top: 16px; display: flex; align-items: center; gap: 12px; font-size: 0.85rem; }
+        .alert-success { background: #d1fae5; color: #065f46; border-left: 3px solid var(--success); }
+        .alert-error { background: #fee2e2; color: #991b1b; border-left: 3px solid var(--danger); }
 
-        .btn-secondary {
-            background: #f1f5f9;
-            color: var(--text-secondary);
-        }
-
-        .btn-secondary:hover {
-            background: #e2e8f0;
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid var(--border);
-            color: var(--text-secondary);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .result-box {
-            margin-top: 24px;
-            background: #0f172a;
-            border-radius: 16px;
-            padding: 20px;
-            overflow-x: auto;
-        }
-
-        .result-box pre {
-            color: #a5f3fc;
-            font-family: 'Menlo', 'Monaco', monospace;
-            font-size: 12px;
-            white-space: pre-wrap;
-            word-break: break-all;
-            line-height: 1.5;
-        }
-
-        .alert {
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-top: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.85rem;
-        }
-
-        .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border-left: 3px solid var(--success);
-        }
-
-        .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border-left: 3px solid var(--danger);
-        }
-
-        .lookup-card {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 24px;
-            margin-top: 20px;
-            border: 1px solid var(--border);
-        }
-
-        .lookup-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
+        .lookup-card { background: #f8fafc; border-radius: 20px; padding: 24px; margin-top: 20px; border: 1px solid var(--border); }
+        .lookup-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
         .lookup-badge-include { background: #d1fae5; color: #065f46; }
         .lookup-badge-a { background: #fed7aa; color: #9a3412; }
         .lookup-badge-mx { background: #dbeafe; color: #1e40af; }
-
         .lookup-empty { color: var(--text-muted); font-style: italic; }
 
         .filter-bar {
@@ -350,54 +159,15 @@
             gap: 16px;
             align-items: flex-end;
         }
+        .filter-group { flex: 1; min-width: 160px; }
+        .filter-group label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 4px; }
 
-        .filter-group {
-            flex: 1;
-            min-width: 160px;
-        }
-
-        .filter-group label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-        }
-
-        th {
-            background: #f8fafc;
-            padding: 14px 12px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border);
-            cursor: pointer;
-        }
-
-        th:hover {
-            background: #f1f5f9;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        tr:hover {
-            background: #f8fafc;
-        }
+        .table-wrapper { overflow-x: auto; border-radius: 16px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        th { background: #f8fafc; padding: 14px 12px; text-align: left; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border); cursor: pointer; }
+        th:hover { background: #f1f5f9; }
+        td { padding: 12px; border-bottom: 1px solid var(--border); }
+        tr:hover { background: #f8fafc; }
 
         .db-cell {
             width: 100%;
@@ -408,40 +178,13 @@
             font-family: monospace;
             font-size: 0.75rem;
         }
+        .db-cell:hover { border-color: var(--border); background: white; }
+        .db-cell:focus { outline: none; border-color: var(--accent); background: white; }
 
-        .db-cell:hover {
-            border-color: var(--border);
-            background: white;
-        }
+        .delete-btn { background: var(--danger); color: white; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.7rem; }
+        .delete-btn:hover { background: #dc2626; }
 
-        .db-cell:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: white;
-        }
-
-        .delete-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.7rem;
-        }
-
-        .delete-btn:hover {
-            background: #dc2626;
-        }
-
-        .type-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
+        .type-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
         .type-include { background: #d1fae5; color: #065f46; }
         .type-a { background: #fed7aa; color: #9a3412; }
         .type-mx { background: #dbeafe; color: #1e40af; }
@@ -458,29 +201,14 @@
             font-size: 0.8rem;
         }
 
-        .hidden {
-            display: none;
-        }
-
-        .text-muted {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-        }
+        .hidden { display: none; }
+        .text-muted { color: var(--text-muted); font-size: 0.7rem; }
 
         @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .tools-grid {
-                border-radius: 20px;
-            }
-            .tool-btn {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
-            .card-body {
-                padding: 20px;
-            }
+            .form-row { grid-template-columns: 1fr; }
+            .tools-grid { border-radius: 20px; }
+            .tool-btn { padding: 8px 16px; font-size: 0.8rem; }
+            .card-body { padding: 20px; }
         }
     </style>
 </head>
@@ -489,13 +217,8 @@
         <div class="nav-container">
             <div class="nav-content">
                 <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                    <div>
-                        <h1>Domains Manager</h1>
-                        <p>DNS Management Suite</p>
-                    </div>
+                    <div class="logo-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <div><h1>Domains Manager</h1><p>DNS Management Suite</p></div>
                 </div>
             </div>
         </div>
@@ -503,24 +226,14 @@
 
     <div class="tools-container">
         <div class="tools-grid">
-            <button class="tool-btn active" data-tool="spf">
-                <i class="fas fa-magic"></i> SPF Generator
-            </button>
-            <button class="tool-btn" data-tool="lookup">
-                <i class="fas fa-search"></i> Domain Lookup
-            </button>
-            <button class="tool-btn" data-tool="database">
-                <i class="fas fa-database"></i> Database Editor
-            </button>
-            <button class="tool-btn" data-tool="bulk">
-                <i class="fas fa-upload"></i> Bulk Import
-            </button>
+            <button class="tool-btn active" data-tool="spf"><i class="fas fa-magic"></i> SPF Generator</button>
+            <button class="tool-btn" data-tool="lookup"><i class="fas fa-search"></i> Domain Lookup</button>
+            <button class="tool-btn" data-tool="database"><i class="fas fa-database"></i> Database Editor</button>
+            <button class="tool-btn" data-tool="bulk"><i class="fas fa-upload"></i> Bulk Import</button>
         </div>
 
         <div id="spfTool" class="main-card">
-            <div class="card-header">
-                <h2><i class="fas fa-magic"></i> SPF Record Generator</h2>
-            </div>
+            <div class="card-header"><h2><i class="fas fa-magic"></i> SPF Record Generator</h2></div>
             <div class="card-body">
                 <div class="form-row">
                     <div class="form-group">
@@ -544,9 +257,7 @@
         </div>
 
         <div id="lookupTool" class="main-card hidden">
-            <div class="card-header">
-                <h2><i class="fas fa-search"></i> Domain Lookup</h2>
-            </div>
+            <div class="card-header"><h2><i class="fas fa-search"></i> Domain Lookup</h2></div>
             <div class="card-body">
                 <div class="form-group">
                     <label><i class="fas fa-question-circle"></i> Enter Domain (Extern or Intern)</label>
@@ -563,9 +274,7 @@
         </div>
 
         <div id="databaseTool" class="main-card hidden">
-            <div class="card-header">
-                <h2><i class="fas fa-table"></i> Database Editor</h2>
-            </div>
+            <div class="card-header"><h2><i class="fas fa-table"></i> Database Editor</h2></div>
             <div class="card-body">
                 <div class="btn-group">
                     <button class="btn btn-success" id="addEntryBtn"><i class="fas fa-plus"></i> Add Entry</button>
@@ -625,9 +334,7 @@
         </div>
 
         <div id="bulkTool" class="main-card hidden">
-            <div class="card-header">
-                <h2><i class="fas fa-upload"></i> Bulk Import</h2>
-            </div>
+            <div class="card-header"><h2><i class="fas fa-upload"></i> Bulk Import</h2></div>
             <div class="card-body">
                 <div class="form-group">
                     <label><i class="fas fa-table"></i> Tab-Separated Data</label>
@@ -644,749 +351,771 @@ hiuniversity.com	hiumail.com	Not affected	INCLUDE"></textarea>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    // ========== COMPLETE DATABASE - ALL 318 ENTRIES ==========
-    const DEFAULT_DB = [
-        ["mediscan.com.br","mediscanmkt.com","Not affected","INCLUDE"],
-        ["hiuniversity.com","hiumail.com","Not affected","INCLUDE"],
-        ["stockholmemergencyclan.com","winstrihosting.co.uk","Not affected","A"],
-        ["peakrecoveryandhealthcenter.com","peakrecoveryandhealth.com","Not affected","A"],
-        ["rhubarbrecruitment.co.uk","mmsystem.co.uk","Not affected","INCLUDE"],
-        ["thisistriss.com","emailbounce.nl","Not affected","A"],
-        ["stevenkgannlaw.com","kmgpresitge.com","Not affected","A"],
-        ["oncologymeet.com","drscarriers.in","Not affected","A"],
-        ["brotzeitundspiele.de","brotzeotundspiele.de","Nabil","INCLUDE"],
-        ["lucaceccaroni.it","s2smtp.com","ahmed","INCLUDE"],
-        ["precisionglassblowing.com","pgb-optical.com","Not affected","INCLUDE"],
-        ["originalorganics.co.uk","originalwebware.co.uk","Chaymae","INCLUDE"],
-        ["liscript.com","zixsnbhosted.com","Not affected","INCLUDE"],
-        ["globallean.net","bmdsend.com","Not affected","INCLUDE"],
-        ["happyhungryhues.com","zohocloud.in","Amine","INCLUDE"],
-        ["agentshield.com","rbdstudios.com","ahmed","INCLUDE"],
-        ["yuicy.de","beispielwebsiteihresunternehmens.de","Not affected","INCLUDE"],
-        ["tecnologic-to.it","venortribe.com","Lhocine","INCLUDE"],
-        ["gfainvestments.com","email-focused-advisors.com","Not affected","INCLUDE"],
-        ["mccabelumber.com","epicormailservers.com","Lhocine","INCLUDE"],
-        ["homeassisthealth.org","ecastplatform.net","Not affected","INCLUDE"],
-        ["eluminaelearning.com","spffromdoppler.com","Not affected","INCLUDE"],
-        ["southmere.bradford.sch.uk","primaryschoolemail.com","Amine","INCLUDE"],
-        ["stbschenk.de","spf-stbschenk.de","Not affected","INCLUDE"],
-        ["leoniezehle.de","leonizehle.de","Not affected","INCLUDE"],
-        ["emailmarketingassistant.co.uk","everythingemailmarketing.co.uk","Not affected","INCLUDE"],
-        ["chooseradont.com","chooseradon.com","Lhocine","INCLUDE"],
-        ["friendshipcruises.nl","avehacloud.com","Not affected","INCLUDE"],
-        ["financialapps.com","powerwalletstage.com","Amine","INCLUDE"],
-        ["dhruvacollege.net","vfaff.com","Not affected","INCLUDE"],
-        ["jennandjase.co.uk","motorangels.co.uk","Amine","INCLUDE"],
-        ["waytobe.com","udacat.com","Not affected","INCLUDE"],
-        ["southwestlaboratory.com","amerihealthlaboratory.com","Lhocine","INCLUDE"],
-        ["dmsmail.net","4mailcheck.com","Chaymae","INCLUDE"],
-        ["inmon.co.uk","inmonuk.com","Not affected","INCLUDE"],
-        ["capitb.co.uk","eett.org.uk","Amine","INCLUDE"],
-        ["archetypemotorsllc.com","web-hosing.com","Nada","INCLUDE"],
-        ["mediacreatorsagency.com","mediacreatorsavency.com","Nada","INCLUDE"],
-        ["medikan.com.au","server-cpainel.com","Not affected","INCLUDE"],
-        ["wardwilliams.co.uk","smtppout.com","Not affected","INCLUDE"],
-        ["grayshottstagers.co.uk","wkukhost.com","ali","INCLUDE"],
-        ["globalphos.net","simplemarket.us","ali","INCLUDE"],
-        ["newton-house.net","livemaiol.co.uk","Not affected","INCLUDE"],
-        ["halenessupdates.com","sautoires.com","salma","INCLUDE"],
-        ["spectrum-communications.ca","spectrumpaging.ca","Not affected","INCLUDE"],
-        ["winbrogroup.com","docebopass.com","Lhocine","INCLUDE"],
-        ["itssrv.net","itsserv.net","HANAE HAJ","INCLUDE"],
-        ["lnctrading.co.uk","tacklephishin.com","HANAE HAJ","INCLUDE"],
-        ["square-yards.net","blingfares.com","Not affected","INCLUDE"],
-        ["cyber.bayern","srvrz.net","Not affected","INCLUDE"],
-        ["enttec.co.uk","amazonsjes.com","Not affected","INCLUDE"],
-        ["varcm.com","getrainmaker.net","Not affected","INCLUDE"],
-        ["verandapensacola.com","websitebewelcome.com","Lhocine","INCLUDE"],
-        ["dwk-lifescience.com","intermdedia.net","Lhocine","INCLUDE"],
-        ["epinsurance.com","epinsurance.net","Not affected","INCLUDE"],
-        ["specsmakers.in","inbox18.org","Not affected","INCLUDE"],
-        ["bluegorillamail.com","prodataverify.com","Lhocine","INCLUDE"],
-        ["scienceresourcebox.co.nz","sciencresourcebox.com","Not affected","INCLUDE"],
-        ["karmapetfoods.com","spf-mars-inc.com","Chaymae","INCLUDE"],
-        ["brittzy.com","mailzapp.io","Lhocine","INCLUDE"],
-        ["customadesign.com","myetroopertestsite.com","HANAE HAJ","INCLUDE"],
-        ["unique.co.jp","asomanabi.com","Yassine","INCLUDE"],
-        ["hydrozorg.nl","socialgreendistance.com","Not affected","INCLUDE"],
-        ["iltuoprestito.it","egg-mail.com","Yassine","INCLUDE"],
-        ["ballyclarelimited.co.uk","cosalt-clothing.com","Not affected","INCLUDE"],
-        ["progressiverec.co.uk","progtressiverec.co.uk","Amine","INCLUDE"],
-        ["spennymoor.durham.sch.uk","spen-mail.co.uk","Not affected","INCLUDE"],
-        ["vitpro.net","ezfiled.com","Lhocine","INCLUDE"],
-        ["verhoevenenvandongen.nl","g-tele2.com","nouhaila","INCLUDE"],
-        ["myfirmbizcard.com","cloudysmtp.net","Nada","INCLUDE"],
-        ["myfirmleads.com","cloudysmtp.net","Nada","INCLUDE"],
-        ["mailme.co.uk","piserve.co.uk","Not affected","INCLUDE"],
-        ["2020legal.co.uk","instantaction.co.uk","Not affected","INCLUDE"],
-        ["what-is-medicare.net","artistsguildfineart.com","Not affected","INCLUDE"],
-        ["groupe-com.com","press-include.com","Not affected","INCLUDE"],
-        ["gun-mafia.com","techbytes.us","Lhocine","INCLUDE"],
-        ["yupradinhosting.com","yupradingosting.com","Not affected","INCLUDE"],
-        ["purrfectpretties.com","purrectpretties.com","salma","INCLUDE"],
-        ["ukcommercialroofing.com","algenkosmetik.com","Not affected","INCLUDE"],
-        ["theautumnpaws.com","fortislegal.me","salma","INCLUDE"],
-        ["mtnbooksaccounting.com","web-hosting-hosting.com","nouhaila","INCLUDE"],
-        ["houseofmangione.com","casademangione.com","Not affected","INCLUDE"],
-        ["paulcoatestruckingllc.com","mesaagingengine.com","Lhocine","INCLUDE"],
-        ["zachbau-gmbh.com","servingparrot.de","Not affected","INCLUDE"],
-        ["customceramix.com","cloudysmtp.com","HANAE HAJ","INCLUDE"],
-        ["ggaifactory.com","ggaifactory.net","Lhocine","INCLUDE"],
-        ["havocdominion.com","hdsvr.com","Not affected","INCLUDE"],
-        ["jansenhessels.com","nltelefonie.nl","Lhocine","INCLUDE"],
-        ["cseceidf.com","gestia-doc.net","Lhocine","INCLUDE"],
-        ["goldbergercpa.com","texrelay2.com","Amine","INCLUDE"],
-        ["bearhoch.com","prontomail.ch","HANAE HAJ","INCLUDE"],
-        ["findbestiptv.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
-        ["innovadent.net","c-28proof.com","Not affected","INCLUDE"],
-        ["continuumfacades.com","madrillap.com","Not affected","INCLUDE"],
-        ["besttvstreamz.com","emarketingblast.com","ali","INCLUDE"],
-        ["blarghy.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
-        ["blueviewstreamz.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
-        ["cablefreestreamz.com","emarketingblast.com","ali","INCLUDE"],
-        ["godzillastreamz.com","emarketingblast.com","Not affected","INCLUDE"],
-        ["jetfuelstreamz.com","emarketingblast.com","ali","INCLUDE"],
-        ["onlineiptvpros.com","emarketingblast.com","ali","INCLUDE"],
-        ["treetopstreamz.com","emarketingblast.com","Not affected","INCLUDE"],
-        ["tripodstreamz.com","emarketingblast.com","aissam","INCLUDE"],
-        ["vipertvstreams.com","emarketingblast.com","ali","INCLUDE"],
-        ["whitecloudstreamz.com","emarketingblast.com","Not affected","INCLUDE"],
-        ["wyldviewstreamz.com","emarketingblast.com","Not affected","INCLUDE"],
-        ["cordcutterstreaming.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
-        ["easybestiptv.com","emarketingblast.com","ahmed","INCLUDE"],
-        ["wefindiptv.com","emarketingblast.com","Not affected","INCLUDE"],
-        ["ondmarc-qa05.com","ipointtonowhere.com","ali","INCLUDE"],
-        ["dnfairytaleextension.com","rajmangal.in","Lhocine","INCLUDE"],
-        ["winwickbarnalpacas.co.uk","goliathreservations.com","Not affected","INCLUDE"],
-        ["grumpy1260suzukispares.co.uk","netorth.co.uk","salma","INCLUDE"],
-        ["jewelhost.co.uk","glasscow.net","Not affected","INCLUDE"],
-        ["domainpipe.com","domainpipe.co.uk","Lhocine","INCLUDE"],
-        ["cleanco-wa.com","cleancowa.com","Not affected","INCLUDE"],
-        ["surbitonmasons.co.uk","dantulloch.uk","HANAE HAJ","INCLUDE"],
-        ["totalrecallnow.net","totalrecalllearning.com","Lhocine","INCLUDE"],
-        ["antipsoe.com","fakebride.com","salma","INCLUDE"],
-        ["fromps.com","preciousmagic.com","Lhocine","INCLUDE"],
-        ["unleashed-technology.com","uthosts.us","Yassine","INCLUDE"],
-        ["dogwin.com","elenaescobedo.me","Lhocine","INCLUDE"],
-        ["axsh.com","suxinsen.com","Nabil","INCLUDE"],
-        ["standrewsmaidstone.co.uk","standrewsluxuryapartments.co.uk","Not affected","INCLUDE"],
-        ["abramelin.co.uk","languageconnected.co.uk","Not affected","INCLUDE"],
-        ["educationlawyers.net","guardedhost.co","Lhocine","INCLUDE"],
-        ["resiliencegrowth.com.au","uxtend.co","Not affected","INCLUDE"],
-        ["raptair.com.au","travech.com","ali","INCLUDE"],
-        ["doctorsatmaleny.com.au","emailsignatures365.co","Not affected","INCLUDE"],
-        ["meloemartini.com.br","spf-hospedainterativa.com","Not affected","INCLUDE"],
-        ["toneli.com.br","dnschave.net","Not affected","INCLUDE"],
-        ["alton-moore.net","rioplexwireless.com","Not affected","INCLUDE"],
-        ["nepalqrcode.com","qrcpi.eu","aissam","INCLUDE"],
-        ["paydaymoneycard.com","quantendr.in","Not affected","INCLUDE"],
-        ["bsz-lindau.de","agentaurserver.de","Nabil","INCLUDE"],
-        ["s3racing.de","s3siegen.de","Amine","INCLUDE"],
-        ["birdielawnsnow.com","bridielawnsnow.com","Not affected","INCLUDE"],
-        ["abelzeta.com","sendarid.net","Not affected","INCLUDE"],
-        ["energynetworksresearch.com.au","mailhostingww.com","Not affected","INCLUDE"],
-        ["slp.com.au","retptyltd.com","Lhocine","INCLUDE"],
-        ["technodrome.com.au","rltdns.net","Amine","INCLUDE"],
-        ["agenta.solutions","another-provider.com","Not affected","INCLUDE"],
-        ["avosoft.net","bah3.us","Not affected","INCLUDE"],
-        ["9mark.biz","medeliver.net","Not affected","INCLUDE"],
-        ["procarelight.biz","servidorsdns.net","Lhocine","INCLUDE"],
-        ["fixheart.biz","fcm-spf1.com","Nabil","INCLUDE"],
-        ["marathonvankruibeke.be","hostedb.eu","Not affected","INCLUDE"],
-        ["allimex.be","alliemex.eu","youssef","INCLUDE"],
-        ["navaho.biz","sewan.biz","Amine","INCLUDE"],
-        ["dominey.biz","spf-dominey.biz","nouhaila","INCLUDE"],
-        ["sigsc.com","astonishmails.com","Yassine","INCLUDE"],
-        ["onebusiness.nl","mailwitch.nl","Chaymae","INCLUDE"],
-        ["someonehelpme.com.au","domainspf.com","youssef","INCLUDE"],
-        ["shellharbourpodiatry.com.au","some-service.com","Not affected","INCLUDE"],
-        ["raymondvincenthomes.com.au","hositng-cloud.net","ali","INCLUDE"],
-        ["finestream.com.au","hosty-ourservices.net","Not affected","INCLUDE"],
-        ["vs-lassing.at","learnconsulst.com","Amine","INCLUDE"],
-        ["husli.com.au","locedoncloud.com","youssef","INCLUDE"],
-        ["voicerecognition.com.au","tidioemail.com","ahmed","INCLUDE"],
-        ["lateraldesign.com.au","zoho-books.com","youssef","INCLUDE"],
-        ["icon-tech.com.au","zscend.net","nouhaila","INCLUDE"],
-        ["hausalex.at","emailsingatures365.com","salma","INCLUDE"],
-        ["werbezirkus.at","pixelandthebrain.com","Not affected","INCLUDE"],
-        ["krempl.at","ediral.biz","Not affected","INCLUDE"],
-        ["plastikkarten.at","allinkmail.de","Yassine","INCLUDE"],
-        ["strengtheningfamiliesaustralia.com.au","securemailserver.net","Not affected","INCLUDE"],
-        ["nzwindows.nz","spf-au-emailsignatures365.com","Not affected","INCLUDE"],
-        ["oculiseyewear.com","emailmyshopify.com","nouhaila","INCLUDE"],
-        ["supamaxx.com.au","site-mailer.com","Lhocine","INCLUDE"],
-        ["wyndhamtv.com.au","dnsmarhost.net","Lhocine","INCLUDE"],
-        ["oaktreestorage.com","oaktreestorge.com","nouhaila","INCLUDE"],
-        ["oaremodelings.com","highlevel-mail.com","Yassine","INCLUDE"],
-        ["objectionoverule.com","alishakennedy.fun","Not affected","INCLUDE"],
-        ["obtainingdesiredresultsllc.com","google-spf.com","HANAE HAJ","INCLUDE"],
-        ["ocb.nl","ndcs.nl","Not affected","INCLUDE"],
-        ["oceanenergy.co.ke","mxguarddog.net","Not affected","INCLUDE"],
-        ["och.co.za","mdtechhost.com","Not affected","INCLUDE"],
-        ["ocn-research.com","mxhiching.com","Nabil","INCLUDE"],
-        ["oclshipping.com","mysahgal.com","Not affected","INCLUDE"],
-        ["octalcapital.com","netvgator.com","Chaymae","INCLUDE"],
-        ["oconnordevelopments.com","rathmoremanagement.com","Not affected","INCLUDE"],
-        ["octaneadvisory.com","zoho-book.in","Lhocine","INCLUDE"],
-        ["oev1-events.nl","clustermedia.nl","nouhaila","INCLUDE"],
-        ["oecrpsrilanka.org","domarksfer.com","Not affected","INCLUDE"],
-        ["odysseygrpapps.com","mairoute.net","Nada","INCLUDE"],
-        ["ofby.us","yugongnews.com","Not affected","INCLUDE"],
-        ["officialchargepod.com","instantly-mail.net","Not affected","INCLUDE"],
-        ["officeproductsonline.co.nz","sparkpostmta.com","Chaymae","INCLUDE"],
-        ["off-bank.ru","acellemail.biz","ahmed","INCLUDE"],
-        ["offersbettertoday.com","eriughieurgrhjoierge.com","salma","INCLUDE"],
-        ["off24.dk","mail4ce.eu","salma","INCLUDE"],
-        ["oasislogics.com","cloudflaresmtp.com","Not affected","INCLUDE"],
-        ["kent.co.in","tomcat1-prod.io","Lhocine","INCLUDE"],
-        ["kaijeaw.com","tanktheoperator.com","Not affected","INCLUDE"],
-        ["bridgemoney.co","epmailer.net","Not affected","INCLUDE"],
-        ["techtree.com","mikrozmassmail.in","Not affected","INCLUDE"],
-        ["hhsdr.com","barrabudanetworks.com","ahmed","INCLUDE"],
-        ["d2h.com","videocsvc.info","Not affected","INCLUDE"],
-        ["trackview.net","penguinjeffrey.com","Chaymae","INCLUDE"],
-        ["wolpert.com","astonishmail.com","Not affected","INCLUDE"],
-        ["gewoonongewoon.nl","just4mails.nl","Not affected","INCLUDE"],
-        ["gibuys.net","schnecktcs.com","Not affected","INCLUDE"],
-        ["ghassanrizk.com","playforlebanon.com","Not affected","INCLUDE"],
-        ["giovodobrasil.com","mtaroutes.nl","Yassine","INCLUDE"],
-        ["gibraj.com","importsend.net","ahmed","INCLUDE"],
-        ["gfautolamp.com","lao-xue.com","ahmed","INCLUDE"],
-        ["ghr-realty.com","your-webhost.com","ahmed","INCLUDE"],
-        ["gibsonsgroup.com","gibsondrakeent.com","ali","INCLUDE"],
-        ["ginojansen.nl","dignet.live","ahmed","INCLUDE"],
-        ["collectthecash.biz","autosubmittersiteautomations.com","nouhaila","INCLUDE"],
-        ["mrhempflower.com","mhfsupport.com","Not affected","INCLUDE"],
-        ["grassworks.org","neonmails.com","salma","INCLUDE"],
-        ["nowakdental.com","netsuitemail.com","salma","INCLUDE"],
-        ["thyroidcookbook.com","rstarsendmail.com","nouhaila","INCLUDE"],
-        ["journeypoint.com.au","messagingsvc.com","ahmed","INCLUDE"],
-        ["beaumont-capitalmarkets.co.uk","spf20i.com","Not affected","INCLUDE"],
-        ["getventuresai.com","imailinstantly.com","aissam","INCLUDE"],
-        ["gjapan.com","gjapoan.com","nouhaila","INCLUDE"],
-        ["gettysfamily.com","northwind-sc.com","Not affected","INCLUDE"],
-        ["obbmnetwork.tv","obbnetwork.tv","Not affected","INCLUDE"],
-        ["burbankmasons.com","aakarorient.com","ahmed","INCLUDE"],
-        ["greenfreedom.net","quackcenter.com","ali","INCLUDE"],
-        ["canamsolutionsinc.com","canamsolutions.ca","Not affected","INCLUDE"],
-        ["3dchili.cz","3dchili.info","ahmed","INCLUDE"],
-        ["usnetworksinc.com","hiredgunsonline.com","Lhocine","INCLUDE"],
-        ["krk25ga.com","spacestation53.com","ahmed","INCLUDE"],
-        ["nursecallequipment.co.uk","immensefusion.com","salma","INCLUDE"],
-        ["karimpieritz.de","do-dns.de","salma","INCLUDE"],
-        ["oakfieldsoftware.co.uk","groovemail.io","Not affected","INCLUDE"],
-        ["silvaultramindsystem.com","clicktoviewthispage.org","ali","INCLUDE"],
-        ["nutripassaros.com.br","nutripassaros.com","salma","INCLUDE"],
-        ["digitaler-meldeschein.at","hiq5.com","ali","INCLUDE"],
-        ["nurseconsultantassociates.com","mailspamproptection.com","nouhaila","INCLUDE"],
-        ["nurseconsultantassociates.org","mailspamproptection.com","nouhaila","INCLUDE"],
-        ["seekhair.co.uk","vlitevps.com","salma","INCLUDE"],
-        ["givemobile.net","msexserver.com","aissam","INCLUDE"],
-        ["brocksgap.com","clubexpressmail.net","aissam","INCLUDE"],
-        ["odaction.com","spfprivateemail.com","Not affected","INCLUDE"],
-        ["nathaliebladt.com","wixsmtp.com","HANAE HAJ","INCLUDE"],
-        ["mitchemrocks.com","rabbitandturtlepubrestaurant.com","ali","INCLUDE"],
-        ["victoryfellowship.net","parrisbailey.com","ali","INCLUDE"],
-        ["austin-pool-builders.com","tastyplacementhosting.com","ahmed","INCLUDE"],
-        ["klon.ai","emailsquarespace.net","HANAE HAJ","INCLUDE"],
-        ["michigancleanwater.org","squarespace-main.com","Lhocine","INCLUDE"],
-        ["brauerei-schoenram.de","schoenrammer-gmbh.de","ali","INCLUDE"],
-        ["simplycolors.com","sm-srv.net","Not affected","INCLUDE"],
-        ["rgarchitecture.com","mydriplists.com","Yassine","INCLUDE"],
-        ["alpe-dhuzes.nl","mailingcube.nl","Chaymae","INCLUDE"],
-        ["bordi.ch","cyprovider.ch","Not affected","INCLUDE"],
-        ["butzeria.ch","swizzonicmail.ch","Not affected","INCLUDE"],
-        ["climateimpactx.com","cpmaills.com","Lhocine","INCLUDE"],
-        ["itraveljerusalem.com","itravel-jerusalem.com","Lhocine","A"],
-        ["perduefarms.com","perduefarms.ca","HANAE HAJ","A"],
-        ["slidedeck.com","slidedeckapp.com","salma","A"],
-        ["betty.bg","byulet.in","Amine","A"],
-        ["tondt.com","1adn1.com","aissam","A"],
-        ["stephen-ewart.com","blazingfast-communications.com","Nada","A"],
-        ["wrive.com","buratora.com","Not affected","A"],
-        ["focosistemas.com","jjroman.info","Not affected","A"],
-        ["kurashvili.com","kurashvili.info","salma","A"],
-        ["thebabycd.com","thebabycdcms.com","Chaymae","A"],
-        ["dmheatpumpservices.com","nutriwebshop.biz","Nada","A"],
-        ["idepartments.com","mailboxsvc.com","Not affected","A"],
-        ["nighthawk-city.de","zlgr.de","Not affected","A"],
-        ["efa-dienstleistung.de","efa-dienstleistungen.de","Not affected","A"],
-        ["desertashgrove.com.au","coastserver7.net","salma","A"],
-        ["dogworx.com","greentowersupply.com","Not affected","A"],
-        ["thelittlefarm.com","littlefarmproductions.com","Not affected","A"],
-        ["sourceseparationsystems.com.au","sourcesep.com","salma","A"],
-        ["aaatraining.com.au","c2gloo.net","Not affected","A"],
-        ["acbconline.edu.au","vsmicrodata.net","Not affected","A"],
-        ["powerhousecycling.com.au","netregisty.net","Not affected","A"],
-        ["scherfler-landtechnik.at","easname.eu","Amine","A"],
-        ["oaklees.com","dailyhertald.com","Not affected","A"],
-        ["o2real.com","o2real.us","Not affected","A"],
-        ["getugly.com","thinkfast1.com","aissam","A"],
-        ["nutrideport.es","nutri-deporte.com","aissam","A"],
-        ["themightybooths.com.au","boothbook-mail.com","ali","A"],
-        ["fashioninteriors.co.uk","fresh-ideas.co.uk","Not affected","A"],
-        ["opentech.me","lodyshots.net","ali","A"],
-        ["boekmetnaam.nl","mailserverdbs.nl","Not affected","A"],
-        ["precisiongutters.com","elavaon.com","ali","A"],
-        ["imaginismstudios.com","theperfectbait.com","youssef","A"]
-    ];
+    <script>
+        // ========== COMPLETE DATABASE - ALL 318 ENTRIES ==========
+        const DEFAULT_DB = [
+            ["mediscan.com.br","mediscanmkt.com","Not affected","INCLUDE"],
+            ["hiuniversity.com","hiumail.com","Not affected","INCLUDE"],
+            ["stockholmemergencyclan.com","winstrihosting.co.uk","Not affected","A"],
+            ["peakrecoveryandhealthcenter.com","peakrecoveryandhealth.com","Not affected","A"],
+            ["rhubarbrecruitment.co.uk","mmsystem.co.uk","Not affected","INCLUDE"],
+            ["thisistriss.com","emailbounce.nl","Not affected","A"],
+            ["stevenkgannlaw.com","kmgpresitge.com","Not affected","A"],
+            ["oncologymeet.com","drscarriers.in","Not affected","A"],
+            ["brotzeitundspiele.de","brotzeotundspiele.de","Nabil","INCLUDE"],
+            ["lucaceccaroni.it","s2smtp.com","ahmed","INCLUDE"],
+            ["precisionglassblowing.com","pgb-optical.com","Not affected","INCLUDE"],
+            ["originalorganics.co.uk","originalwebware.co.uk","Chaymae","INCLUDE"],
+            ["liscript.com","zixsnbhosted.com","Not affected","INCLUDE"],
+            ["globallean.net","bmdsend.com","Not affected","INCLUDE"],
+            ["happyhungryhues.com","zohocloud.in","Amine","INCLUDE"],
+            ["agentshield.com","rbdstudios.com","ahmed","INCLUDE"],
+            ["yuicy.de","beispielwebsiteihresunternehmens.de","Not affected","INCLUDE"],
+            ["tecnologic-to.it","venortribe.com","Lhocine","INCLUDE"],
+            ["gfainvestments.com","email-focused-advisors.com","Not affected","INCLUDE"],
+            ["mccabelumber.com","epicormailservers.com","Lhocine","INCLUDE"],
+            ["homeassisthealth.org","ecastplatform.net","Not affected","INCLUDE"],
+            ["eluminaelearning.com","spffromdoppler.com","Not affected","INCLUDE"],
+            ["southmere.bradford.sch.uk","primaryschoolemail.com","Amine","INCLUDE"],
+            ["stbschenk.de","spf-stbschenk.de","Not affected","INCLUDE"],
+            ["leoniezehle.de","leonizehle.de","Not affected","INCLUDE"],
+            ["emailmarketingassistant.co.uk","everythingemailmarketing.co.uk","Not affected","INCLUDE"],
+            ["chooseradont.com","chooseradon.com","Lhocine","INCLUDE"],
+            ["friendshipcruises.nl","avehacloud.com","Not affected","INCLUDE"],
+            ["financialapps.com","powerwalletstage.com","Amine","INCLUDE"],
+            ["dhruvacollege.net","vfaff.com","Not affected","INCLUDE"],
+            ["jennandjase.co.uk","motorangels.co.uk","Amine","INCLUDE"],
+            ["waytobe.com","udacat.com","Not affected","INCLUDE"],
+            ["southwestlaboratory.com","amerihealthlaboratory.com","Lhocine","INCLUDE"],
+            ["dmsmail.net","4mailcheck.com","Chaymae","INCLUDE"],
+            ["inmon.co.uk","inmonuk.com","Not affected","INCLUDE"],
+            ["capitb.co.uk","eett.org.uk","Amine","INCLUDE"],
+            ["archetypemotorsllc.com","web-hosing.com","Nada","INCLUDE"],
+            ["mediacreatorsagency.com","mediacreatorsavency.com","Nada","INCLUDE"],
+            ["medikan.com.au","server-cpainel.com","Not affected","INCLUDE"],
+            ["wardwilliams.co.uk","smtppout.com","Not affected","INCLUDE"],
+            ["grayshottstagers.co.uk","wkukhost.com","ali","INCLUDE"],
+            ["globalphos.net","simplemarket.us","ali","INCLUDE"],
+            ["newton-house.net","livemaiol.co.uk","Not affected","INCLUDE"],
+            ["halenessupdates.com","sautoires.com","salma","INCLUDE"],
+            ["spectrum-communications.ca","spectrumpaging.ca","Not affected","INCLUDE"],
+            ["winbrogroup.com","docebopass.com","Lhocine","INCLUDE"],
+            ["itssrv.net","itsserv.net","HANAE HAJ","INCLUDE"],
+            ["lnctrading.co.uk","tacklephishin.com","HANAE HAJ","INCLUDE"],
+            ["square-yards.net","blingfares.com","Not affected","INCLUDE"],
+            ["cyber.bayern","srvrz.net","Not affected","INCLUDE"],
+            ["enttec.co.uk","amazonsjes.com","Not affected","INCLUDE"],
+            ["varcm.com","getrainmaker.net","Not affected","INCLUDE"],
+            ["verandapensacola.com","websitebewelcome.com","Lhocine","INCLUDE"],
+            ["dwk-lifescience.com","intermdedia.net","Lhocine","INCLUDE"],
+            ["epinsurance.com","epinsurance.net","Not affected","INCLUDE"],
+            ["specsmakers.in","inbox18.org","Not affected","INCLUDE"],
+            ["bluegorillamail.com","prodataverify.com","Lhocine","INCLUDE"],
+            ["scienceresourcebox.co.nz","sciencresourcebox.com","Not affected","INCLUDE"],
+            ["karmapetfoods.com","spf-mars-inc.com","Chaymae","INCLUDE"],
+            ["brittzy.com","mailzapp.io","Lhocine","INCLUDE"],
+            ["customadesign.com","myetroopertestsite.com","HANAE HAJ","INCLUDE"],
+            ["unique.co.jp","asomanabi.com","Yassine","INCLUDE"],
+            ["hydrozorg.nl","socialgreendistance.com","Not affected","INCLUDE"],
+            ["iltuoprestito.it","egg-mail.com","Yassine","INCLUDE"],
+            ["ballyclarelimited.co.uk","cosalt-clothing.com","Not affected","INCLUDE"],
+            ["progressiverec.co.uk","progtressiverec.co.uk","Amine","INCLUDE"],
+            ["spennymoor.durham.sch.uk","spen-mail.co.uk","Not affected","INCLUDE"],
+            ["vitpro.net","ezfiled.com","Lhocine","INCLUDE"],
+            ["verhoevenenvandongen.nl","g-tele2.com","nouhaila","INCLUDE"],
+            ["myfirmbizcard.com","cloudysmtp.net","Nada","INCLUDE"],
+            ["myfirmleads.com","cloudysmtp.net","Nada","INCLUDE"],
+            ["mailme.co.uk","piserve.co.uk","Not affected","INCLUDE"],
+            ["2020legal.co.uk","instantaction.co.uk","Not affected","INCLUDE"],
+            ["what-is-medicare.net","artistsguildfineart.com","Not affected","INCLUDE"],
+            ["groupe-com.com","press-include.com","Not affected","INCLUDE"],
+            ["gun-mafia.com","techbytes.us","Lhocine","INCLUDE"],
+            ["yupradinhosting.com","yupradingosting.com","Not affected","INCLUDE"],
+            ["purrfectpretties.com","purrectpretties.com","salma","INCLUDE"],
+            ["ukcommercialroofing.com","algenkosmetik.com","Not affected","INCLUDE"],
+            ["theautumnpaws.com","fortislegal.me","salma","INCLUDE"],
+            ["mtnbooksaccounting.com","web-hosting-hosting.com","nouhaila","INCLUDE"],
+            ["houseofmangione.com","casademangione.com","Not affected","INCLUDE"],
+            ["paulcoatestruckingllc.com","mesaagingengine.com","Lhocine","INCLUDE"],
+            ["zachbau-gmbh.com","servingparrot.de","Not affected","INCLUDE"],
+            ["customceramix.com","cloudysmtp.com","HANAE HAJ","INCLUDE"],
+            ["ggaifactory.com","ggaifactory.net","Lhocine","INCLUDE"],
+            ["havocdominion.com","hdsvr.com","Not affected","INCLUDE"],
+            ["jansenhessels.com","nltelefonie.nl","Lhocine","INCLUDE"],
+            ["cseceidf.com","gestia-doc.net","Lhocine","INCLUDE"],
+            ["goldbergercpa.com","texrelay2.com","Amine","INCLUDE"],
+            ["bearhoch.com","prontomail.ch","HANAE HAJ","INCLUDE"],
+            ["findbestiptv.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
+            ["innovadent.net","c-28proof.com","Not affected","INCLUDE"],
+            ["continuumfacades.com","madrillap.com","Not affected","INCLUDE"],
+            ["besttvstreamz.com","emarketingblast.com","ali","INCLUDE"],
+            ["blarghy.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
+            ["blueviewstreamz.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
+            ["cablefreestreamz.com","emarketingblast.com","ali","INCLUDE"],
+            ["godzillastreamz.com","emarketingblast.com","Not affected","INCLUDE"],
+            ["jetfuelstreamz.com","emarketingblast.com","ali","INCLUDE"],
+            ["onlineiptvpros.com","emarketingblast.com","ali","INCLUDE"],
+            ["treetopstreamz.com","emarketingblast.com","Not affected","INCLUDE"],
+            ["tripodstreamz.com","emarketingblast.com","aissam","INCLUDE"],
+            ["vipertvstreams.com","emarketingblast.com","ali","INCLUDE"],
+            ["whitecloudstreamz.com","emarketingblast.com","Not affected","INCLUDE"],
+            ["wyldviewstreamz.com","emarketingblast.com","Not affected","INCLUDE"],
+            ["cordcutterstreaming.com","emarketingblast.com","HANAE HAJ","INCLUDE"],
+            ["easybestiptv.com","emarketingblast.com","ahmed","INCLUDE"],
+            ["wefindiptv.com","emarketingblast.com","Not affected","INCLUDE"],
+            ["ondmarc-qa05.com","ipointtonowhere.com","ali","INCLUDE"],
+            ["dnfairytaleextension.com","rajmangal.in","Lhocine","INCLUDE"],
+            ["winwickbarnalpacas.co.uk","goliathreservations.com","Not affected","INCLUDE"],
+            ["grumpy1260suzukispares.co.uk","netorth.co.uk","salma","INCLUDE"],
+            ["jewelhost.co.uk","glasscow.net","Not affected","INCLUDE"],
+            ["domainpipe.com","domainpipe.co.uk","Lhocine","INCLUDE"],
+            ["cleanco-wa.com","cleancowa.com","Not affected","INCLUDE"],
+            ["surbitonmasons.co.uk","dantulloch.uk","HANAE HAJ","INCLUDE"],
+            ["totalrecallnow.net","totalrecalllearning.com","Lhocine","INCLUDE"],
+            ["antipsoe.com","fakebride.com","salma","INCLUDE"],
+            ["fromps.com","preciousmagic.com","Lhocine","INCLUDE"],
+            ["unleashed-technology.com","uthosts.us","Yassine","INCLUDE"],
+            ["dogwin.com","elenaescobedo.me","Lhocine","INCLUDE"],
+            ["axsh.com","suxinsen.com","Nabil","INCLUDE"],
+            ["standrewsmaidstone.co.uk","standrewsluxuryapartments.co.uk","Not affected","INCLUDE"],
+            ["abramelin.co.uk","languageconnected.co.uk","Not affected","INCLUDE"],
+            ["educationlawyers.net","guardedhost.co","Lhocine","INCLUDE"],
+            ["resiliencegrowth.com.au","uxtend.co","Not affected","INCLUDE"],
+            ["raptair.com.au","travech.com","ali","INCLUDE"],
+            ["doctorsatmaleny.com.au","emailsignatures365.co","Not affected","INCLUDE"],
+            ["meloemartini.com.br","spf-hospedainterativa.com","Not affected","INCLUDE"],
+            ["toneli.com.br","dnschave.net","Not affected","INCLUDE"],
+            ["alton-moore.net","rioplexwireless.com","Not affected","INCLUDE"],
+            ["nepalqrcode.com","qrcpi.eu","aissam","INCLUDE"],
+            ["paydaymoneycard.com","quantendr.in","Not affected","INCLUDE"],
+            ["bsz-lindau.de","agentaurserver.de","Nabil","INCLUDE"],
+            ["s3racing.de","s3siegen.de","Amine","INCLUDE"],
+            ["birdielawnsnow.com","bridielawnsnow.com","Not affected","INCLUDE"],
+            ["abelzeta.com","sendarid.net","Not affected","INCLUDE"],
+            ["energynetworksresearch.com.au","mailhostingww.com","Not affected","INCLUDE"],
+            ["slp.com.au","retptyltd.com","Lhocine","INCLUDE"],
+            ["technodrome.com.au","rltdns.net","Amine","INCLUDE"],
+            ["agenta.solutions","another-provider.com","Not affected","INCLUDE"],
+            ["avosoft.net","bah3.us","Not affected","INCLUDE"],
+            ["9mark.biz","medeliver.net","Not affected","INCLUDE"],
+            ["procarelight.biz","servidorsdns.net","Lhocine","INCLUDE"],
+            ["fixheart.biz","fcm-spf1.com","Nabil","INCLUDE"],
+            ["marathonvankruibeke.be","hostedb.eu","Not affected","INCLUDE"],
+            ["allimex.be","alliemex.eu","youssef","INCLUDE"],
+            ["navaho.biz","sewan.biz","Amine","INCLUDE"],
+            ["dominey.biz","spf-dominey.biz","nouhaila","INCLUDE"],
+            ["sigsc.com","astonishmails.com","Yassine","INCLUDE"],
+            ["onebusiness.nl","mailwitch.nl","Chaymae","INCLUDE"],
+            ["someonehelpme.com.au","domainspf.com","youssef","INCLUDE"],
+            ["shellharbourpodiatry.com.au","some-service.com","Not affected","INCLUDE"],
+            ["raymondvincenthomes.com.au","hositng-cloud.net","ali","INCLUDE"],
+            ["finestream.com.au","hosty-ourservices.net","Not affected","INCLUDE"],
+            ["vs-lassing.at","learnconsulst.com","Amine","INCLUDE"],
+            ["husli.com.au","locedoncloud.com","youssef","INCLUDE"],
+            ["voicerecognition.com.au","tidioemail.com","ahmed","INCLUDE"],
+            ["lateraldesign.com.au","zoho-books.com","youssef","INCLUDE"],
+            ["icon-tech.com.au","zscend.net","nouhaila","INCLUDE"],
+            ["hausalex.at","emailsingatures365.com","salma","INCLUDE"],
+            ["werbezirkus.at","pixelandthebrain.com","Not affected","INCLUDE"],
+            ["krempl.at","ediral.biz","Not affected","INCLUDE"],
+            ["plastikkarten.at","allinkmail.de","Yassine","INCLUDE"],
+            ["strengtheningfamiliesaustralia.com.au","securemailserver.net","Not affected","INCLUDE"],
+            ["nzwindows.nz","spf-au-emailsignatures365.com","Not affected","INCLUDE"],
+            ["oculiseyewear.com","emailmyshopify.com","nouhaila","INCLUDE"],
+            ["supamaxx.com.au","site-mailer.com","Lhocine","INCLUDE"],
+            ["wyndhamtv.com.au","dnsmarhost.net","Lhocine","INCLUDE"],
+            ["oaktreestorage.com","oaktreestorge.com","nouhaila","INCLUDE"],
+            ["oaremodelings.com","highlevel-mail.com","Yassine","INCLUDE"],
+            ["objectionoverule.com","alishakennedy.fun","Not affected","INCLUDE"],
+            ["obtainingdesiredresultsllc.com","google-spf.com","HANAE HAJ","INCLUDE"],
+            ["ocb.nl","ndcs.nl","Not affected","INCLUDE"],
+            ["oceanenergy.co.ke","mxguarddog.net","Not affected","INCLUDE"],
+            ["och.co.za","mdtechhost.com","Not affected","INCLUDE"],
+            ["ocn-research.com","mxhiching.com","Nabil","INCLUDE"],
+            ["oclshipping.com","mysahgal.com","Not affected","INCLUDE"],
+            ["octalcapital.com","netvgator.com","Chaymae","INCLUDE"],
+            ["oconnordevelopments.com","rathmoremanagement.com","Not affected","INCLUDE"],
+            ["octaneadvisory.com","zoho-book.in","Lhocine","INCLUDE"],
+            ["oev1-events.nl","clustermedia.nl","nouhaila","INCLUDE"],
+            ["oecrpsrilanka.org","domarksfer.com","Not affected","INCLUDE"],
+            ["odysseygrpapps.com","mairoute.net","Nada","INCLUDE"],
+            ["ofby.us","yugongnews.com","Not affected","INCLUDE"],
+            ["officialchargepod.com","instantly-mail.net","Not affected","INCLUDE"],
+            ["officeproductsonline.co.nz","sparkpostmta.com","Chaymae","INCLUDE"],
+            ["off-bank.ru","acellemail.biz","ahmed","INCLUDE"],
+            ["offersbettertoday.com","eriughieurgrhjoierge.com","salma","INCLUDE"],
+            ["off24.dk","mail4ce.eu","salma","INCLUDE"],
+            ["oasislogics.com","cloudflaresmtp.com","Not affected","INCLUDE"],
+            ["kent.co.in","tomcat1-prod.io","Lhocine","INCLUDE"],
+            ["kaijeaw.com","tanktheoperator.com","Not affected","INCLUDE"],
+            ["bridgemoney.co","epmailer.net","Not affected","INCLUDE"],
+            ["techtree.com","mikrozmassmail.in","Not affected","INCLUDE"],
+            ["hhsdr.com","barrabudanetworks.com","ahmed","INCLUDE"],
+            ["d2h.com","videocsvc.info","Not affected","INCLUDE"],
+            ["trackview.net","penguinjeffrey.com","Chaymae","INCLUDE"],
+            ["wolpert.com","astonishmail.com","Not affected","INCLUDE"],
+            ["gewoonongewoon.nl","just4mails.nl","Not affected","INCLUDE"],
+            ["gibuys.net","schnecktcs.com","Not affected","INCLUDE"],
+            ["ghassanrizk.com","playforlebanon.com","Not affected","INCLUDE"],
+            ["giovodobrasil.com","mtaroutes.nl","Yassine","INCLUDE"],
+            ["gibraj.com","importsend.net","ahmed","INCLUDE"],
+            ["gfautolamp.com","lao-xue.com","ahmed","INCLUDE"],
+            ["ghr-realty.com","your-webhost.com","ahmed","INCLUDE"],
+            ["gibsonsgroup.com","gibsondrakeent.com","ali","INCLUDE"],
+            ["ginojansen.nl","dignet.live","ahmed","INCLUDE"],
+            ["collectthecash.biz","autosubmittersiteautomations.com","nouhaila","INCLUDE"],
+            ["mrhempflower.com","mhfsupport.com","Not affected","INCLUDE"],
+            ["grassworks.org","neonmails.com","salma","INCLUDE"],
+            ["nowakdental.com","netsuitemail.com","salma","INCLUDE"],
+            ["thyroidcookbook.com","rstarsendmail.com","nouhaila","INCLUDE"],
+            ["journeypoint.com.au","messagingsvc.com","ahmed","INCLUDE"],
+            ["beaumont-capitalmarkets.co.uk","spf20i.com","Not affected","INCLUDE"],
+            ["getventuresai.com","imailinstantly.com","aissam","INCLUDE"],
+            ["gjapan.com","gjapoan.com","nouhaila","INCLUDE"],
+            ["gettysfamily.com","northwind-sc.com","Not affected","INCLUDE"],
+            ["obbmnetwork.tv","obbnetwork.tv","Not affected","INCLUDE"],
+            ["burbankmasons.com","aakarorient.com","ahmed","INCLUDE"],
+            ["greenfreedom.net","quackcenter.com","ali","INCLUDE"],
+            ["canamsolutionsinc.com","canamsolutions.ca","Not affected","INCLUDE"],
+            ["3dchili.cz","3dchili.info","ahmed","INCLUDE"],
+            ["usnetworksinc.com","hiredgunsonline.com","Lhocine","INCLUDE"],
+            ["krk25ga.com","spacestation53.com","ahmed","INCLUDE"],
+            ["nursecallequipment.co.uk","immensefusion.com","salma","INCLUDE"],
+            ["karimpieritz.de","do-dns.de","salma","INCLUDE"],
+            ["oakfieldsoftware.co.uk","groovemail.io","Not affected","INCLUDE"],
+            ["silvaultramindsystem.com","clicktoviewthispage.org","ali","INCLUDE"],
+            ["nutripassaros.com.br","nutripassaros.com","salma","INCLUDE"],
+            ["digitaler-meldeschein.at","hiq5.com","ali","INCLUDE"],
+            ["nurseconsultantassociates.com","mailspamproptection.com","nouhaila","INCLUDE"],
+            ["nurseconsultantassociates.org","mailspamproptection.com","nouhaila","INCLUDE"],
+            ["seekhair.co.uk","vlitevps.com","salma","INCLUDE"],
+            ["givemobile.net","msexserver.com","aissam","INCLUDE"],
+            ["brocksgap.com","clubexpressmail.net","aissam","INCLUDE"],
+            ["odaction.com","spfprivateemail.com","Not affected","INCLUDE"],
+            ["nathaliebladt.com","wixsmtp.com","HANAE HAJ","INCLUDE"],
+            ["mitchemrocks.com","rabbitandturtlepubrestaurant.com","ali","INCLUDE"],
+            ["victoryfellowship.net","parrisbailey.com","ali","INCLUDE"],
+            ["austin-pool-builders.com","tastyplacementhosting.com","ahmed","INCLUDE"],
+            ["klon.ai","emailsquarespace.net","HANAE HAJ","INCLUDE"],
+            ["michigancleanwater.org","squarespace-main.com","Lhocine","INCLUDE"],
+            ["brauerei-schoenram.de","schoenrammer-gmbh.de","ali","INCLUDE"],
+            ["simplycolors.com","sm-srv.net","Not affected","INCLUDE"],
+            ["rgarchitecture.com","mydriplists.com","Yassine","INCLUDE"],
+            ["alpe-dhuzes.nl","mailingcube.nl","Chaymae","INCLUDE"],
+            ["bordi.ch","cyprovider.ch","Not affected","INCLUDE"],
+            ["butzeria.ch","swizzonicmail.ch","Not affected","INCLUDE"],
+            ["climateimpactx.com","cpmaills.com","Lhocine","INCLUDE"],
+            ["itraveljerusalem.com","itravel-jerusalem.com","Lhocine","A"],
+            ["perduefarms.com","perduefarms.ca","HANAE HAJ","A"],
+            ["slidedeck.com","slidedeckapp.com","salma","A"],
+            ["betty.bg","byulet.in","Amine","A"],
+            ["tondt.com","1adn1.com","aissam","A"],
+            ["stephen-ewart.com","blazingfast-communications.com","Nada","A"],
+            ["wrive.com","buratora.com","Not affected","A"],
+            ["focosistemas.com","jjroman.info","Not affected","A"],
+            ["kurashvili.com","kurashvili.info","salma","A"],
+            ["thebabycd.com","thebabycdcms.com","Chaymae","A"],
+            ["dmheatpumpservices.com","nutriwebshop.biz","Nada","A"],
+            ["idepartments.com","mailboxsvc.com","Not affected","A"],
+            ["nighthawk-city.de","zlgr.de","Not affected","A"],
+            ["efa-dienstleistung.de","efa-dienstleistungen.de","Not affected","A"],
+            ["desertashgrove.com.au","coastserver7.net","salma","A"],
+            ["dogworx.com","greentowersupply.com","Not affected","A"],
+            ["thelittlefarm.com","littlefarmproductions.com","Not affected","A"],
+            ["sourceseparationsystems.com.au","sourcesep.com","salma","A"],
+            ["aaatraining.com.au","c2gloo.net","Not affected","A"],
+            ["acbconline.edu.au","vsmicrodata.net","Not affected","A"],
+            ["powerhousecycling.com.au","netregisty.net","Not affected","A"],
+            ["scherfler-landtechnik.at","easname.eu","Amine","A"],
+            ["oaklees.com","dailyhertald.com","Not affected","A"],
+            ["o2real.com","o2real.us","Not affected","A"],
+            ["getugly.com","thinkfast1.com","aissam","A"],
+            ["nutrideport.es","nutri-deporte.com","aissam","A"],
+            ["themightybooths.com.au","boothbook-mail.com","ali","A"],
+            ["fashioninteriors.co.uk","fresh-ideas.co.uk","Not affected","A"],
+            ["opentech.me","lodyshots.net","ali","A"],
+            ["boekmetnaam.nl","mailserverdbs.nl","Not affected","A"],
+            ["precisiongutters.com","elavaon.com","ali","A"],
+            ["imaginismstudios.com","theperfectbait.com","youssef","A"]
+        ];
 
-    let database = [];
-    let filteredData = [];
-    let currentSort = { column: null, direction: 'asc' };
+        let database = [];
+        let filteredData = [];
+        let currentSort = { column: null, direction: 'asc' };
 
-    function loadDB() {
-        const saved = localStorage.getItem('spf_db');
-        if (saved) {
-            database = JSON.parse(saved);
-        } else {
-            database = JSON.parse(JSON.stringify(DEFAULT_DB));
-        }
-        filteredData = [...database];
-        renderDBTable();
-        updateSuggestions();
-        updateStats();
-    }
-
-    function saveDB() {
-        localStorage.setItem('spf_db', JSON.stringify(database));
-        showAlert('Database saved!', 'success', 'spfResult');
-        updateSuggestions();
-    }
-
-    function resetDB() {
-        if (confirm('Reset to original database?')) {
-            database = JSON.parse(JSON.stringify(DEFAULT_DB));
+        function loadDB() {
+            const saved = localStorage.getItem('spf_db');
+            if (saved) {
+                database = JSON.parse(saved);
+            } else {
+                database = JSON.parse(JSON.stringify(DEFAULT_DB));
+            }
             filteredData = [...database];
             renderDBTable();
-            saveDB();
-            clearFilterInputs();
-            showAlert('Database reset!', 'success', 'spfResult');
+            updateSuggestions();
+            updateStats();
         }
-    }
 
-    function updateSuggestions() {
-        const allDomains = new Set();
-        for (const row of database) {
-            allDomains.add(row[0]);
-            if (row[1]) allDomains.add(row[1]);
+        function saveDB() {
+            localStorage.setItem('spf_db', JSON.stringify(database));
+            showAlert('Database saved!', 'success', 'spfResult');
+            updateSuggestions();
         }
-        const datalist = document.getElementById('allSuggestions');
-        if (datalist) {
-            datalist.innerHTML = '';
-            for (const domain of allDomains) {
-                const option = document.createElement('option');
-                option.value = domain;
-                datalist.appendChild(option);
-            }
-        }
-    }
 
-    function addEntry() {
-        database.push(["newdomain.com", "", "Not affected", "INCLUDE"]);
-        filteredData = [...database];
-        renderDBTable();
-        updateStats();
-        showAlert('Entry added!', 'success', 'spfResult');
-    }
-
-    function deleteEntry(index) {
-        const realIndex = database.findIndex((row, i) => 
-            row[0] === filteredData[index][0] && row[1] === filteredData[index][1]
-        );
-        if (realIndex !== -1) {
-            if (confirm(`Delete "${database[realIndex][0]}"?`)) {
-                database.splice(realIndex, 1);
+        function resetDB() {
+            if (confirm('Reset to original database?')) {
+                database = JSON.parse(JSON.stringify(DEFAULT_DB));
                 filteredData = [...database];
                 renderDBTable();
-                updateSuggestions();
-                updateStats();
-                showAlert('Entry deleted!', 'success', 'spfResult');
+                saveDB();
+                clearFilterInputs();
+                showAlert('Database reset!', 'success', 'spfResult');
             }
         }
-    }
 
-    function updateEntry(realIndex, field, value) {
-        database[realIndex][field] = value;
-        applyFilters();
-        updateSuggestions();
-    }
+        function updateSuggestions() {
+            const allDomains = new Set();
+            for (const row of database) {
+                allDomains.add(row[0]);
+                if (row[1]) allDomains.add(row[1]);
+            }
+            const datalist = document.getElementById('allSuggestions');
+            if (datalist) {
+                datalist.innerHTML = '';
+                for (const domain of allDomains) {
+                    const option = document.createElement('option');
+                    option.value = domain;
+                    datalist.appendChild(option);
+                }
+            }
+        }
 
-    function applyFilters() {
-        const filterMain = document.getElementById('filterMain').value.toLowerCase();
-        const filterLinked = document.getElementById('filterLinked').value.toLowerCase();
-        const filterOwner = document.getElementById('filterOwner').value.toLowerCase();
-        const filterType = document.getElementById('filterType').value;
+        function addEntry() {
+            database.push(["newdomain.com", "", "Not affected", "INCLUDE"]);
+            filteredData = [...database];
+            renderDBTable();
+            updateStats();
+            showAlert('Entry added!', 'success', 'spfResult');
+        }
 
-        filteredData = database.filter(row => {
-            if (filterMain && !row[0].toLowerCase().includes(filterMain)) return false;
-            if (filterLinked && !(row[1] || '').toLowerCase().includes(filterLinked)) return false;
-            if (filterOwner && !(row[2] || '').toLowerCase().includes(filterOwner)) return false;
-            if (filterType && row[3] !== filterType) return false;
-            return true;
-        });
+        function deleteEntry(index) {
+            const realIndex = database.findIndex((row, i) => 
+                row[0] === filteredData[index][0] && row[1] === filteredData[index][1]
+            );
+            if (realIndex !== -1) {
+                if (confirm(`Delete "${database[realIndex][0]}"?`)) {
+                    database.splice(realIndex, 1);
+                    filteredData = [...database];
+                    renderDBTable();
+                    updateSuggestions();
+                    updateStats();
+                    showAlert('Entry deleted!', 'success', 'spfResult');
+                }
+            }
+        }
 
-        if (currentSort.column !== null) {
-            sortData(currentSort.column, currentSort.direction);
-        } else {
+        function updateEntry(realIndex, field, value) {
+            database[realIndex][field] = value;
+            applyFilters();
+            updateSuggestions();
+        }
+
+        function applyFilters() {
+            const filterMain = document.getElementById('filterMain').value.toLowerCase();
+            const filterLinked = document.getElementById('filterLinked').value.toLowerCase();
+            const filterOwner = document.getElementById('filterOwner').value.toLowerCase();
+            const filterType = document.getElementById('filterType').value;
+
+            filteredData = database.filter(row => {
+                if (filterMain && !row[0].toLowerCase().includes(filterMain)) return false;
+                if (filterLinked && !(row[1] || '').toLowerCase().includes(filterLinked)) return false;
+                if (filterOwner && !(row[2] || '').toLowerCase().includes(filterOwner)) return false;
+                if (filterType && row[3] !== filterType) return false;
+                return true;
+            });
+
+            if (currentSort.column !== null) {
+                sortData(currentSort.column, currentSort.direction);
+            } else {
+                renderDBTable();
+            }
+            updateStats();
+        }
+
+        function clearFilters() {
+            document.getElementById('filterMain').value = '';
+            document.getElementById('filterLinked').value = '';
+            document.getElementById('filterOwner').value = '';
+            document.getElementById('filterType').value = '';
+            filteredData = [...database];
+            currentSort = { column: null, direction: 'asc' };
+            renderDBTable();
+            updateStats();
+        }
+
+        function clearFilterInputs() {
+            document.getElementById('filterMain').value = '';
+            document.getElementById('filterLinked').value = '';
+            document.getElementById('filterOwner').value = '';
+            document.getElementById('filterType').value = '';
+        }
+
+        function updateStats() {
+            document.getElementById('displayCount').innerText = filteredData.length;
+            document.getElementById('dbTotal').innerText = database.length;
+        }
+
+        function sortData(column, direction) {
+            const colIndex = { main: 0, linked: 1, owner: 2, type: 3 };
+            const idx = colIndex[column];
+            
+            filteredData.sort((a, b) => {
+                let valA = (a[idx] || '').toLowerCase();
+                let valB = (b[idx] || '').toLowerCase();
+                if (direction === 'asc') {
+                    return valA.localeCompare(valB);
+                } else {
+                    return valB.localeCompare(valA);
+                }
+            });
             renderDBTable();
         }
-        updateStats();
-    }
 
-    function clearFilters() {
-        document.getElementById('filterMain').value = '';
-        document.getElementById('filterLinked').value = '';
-        document.getElementById('filterOwner').value = '';
-        document.getElementById('filterType').value = '';
-        filteredData = [...database];
-        currentSort = { column: null, direction: 'asc' };
-        renderDBTable();
-        updateStats();
-    }
-
-    function clearFilterInputs() {
-        document.getElementById('filterMain').value = '';
-        document.getElementById('filterLinked').value = '';
-        document.getElementById('filterOwner').value = '';
-        document.getElementById('filterType').value = '';
-    }
-
-    function updateStats() {
-        document.getElementById('displayCount').innerText = filteredData.length;
-        document.getElementById('dbTotal').innerText = database.length;
-    }
-
-    function sortData(column, direction) {
-        const colIndex = { main: 0, linked: 1, owner: 2, type: 3 };
-        const idx = colIndex[column];
-        
-        filteredData.sort((a, b) => {
-            let valA = (a[idx] || '').toLowerCase();
-            let valB = (b[idx] || '').toLowerCase();
-            if (direction === 'asc') {
-                return valA.localeCompare(valB);
+        function handleSort(column) {
+            if (currentSort.column === column) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
             } else {
-                return valB.localeCompare(valA);
+                currentSort.column = column;
+                currentSort.direction = 'asc';
             }
-        });
-        renderDBTable();
-    }
-
-    function handleSort(column) {
-        if (currentSort.column === column) {
-            currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
-        } else {
-            currentSort.column = column;
-            currentSort.direction = 'asc';
-        }
-        sortData(currentSort.column, currentSort.direction);
-        updateSortIcons();
-    }
-
-    function updateSortIcons() {
-        const headers = ['main', 'linked', 'owner', 'type'];
-        headers.forEach(h => {
-            const icon = document.querySelector(`#sort${h.charAt(0).toUpperCase() + h.slice(1)} i`);
-            if (icon) {
-                if (currentSort.column === h) {
-                    icon.className = currentSort.direction === 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down';
-                } else {
-                    icon.className = 'fas fa-sort';
-                }
-            }
-        });
-    }
-
-    function renderDBTable() {
-        const tbody = document.getElementById('dbBody');
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        
-        for (let i = 0; i < filteredData.length; i++) {
-            const row = filteredData[i];
-            const realIndex = database.findIndex((r, idx) => 
-                r[0] === row[0] && r[1] === row[1]
-            );
-            
-            const typeClass = row[3] === 'INCLUDE' ? 'type-include' : (row[3] === 'A' ? 'type-a' : (row[3] === 'MX' ? 'type-mx' : 'type-default'));
-            
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td><input type="text" value="${escapeHtml(row[0] || '')}" data-realindex="${realIndex}" data-field="0" class="db-cell"></td>
-                <td><input type="text" value="${escapeHtml(row[1] || '')}" data-realindex="${realIndex}" data-field="1" class="db-cell"></td>
-                <td><input type="text" value="${escapeHtml(row[2] || '')}" data-realindex="${realIndex}" data-field="2" class="db-cell"></td>
-                <td><span class="type-badge ${typeClass}">${escapeHtml(row[3] || '')}</span></td>
-                <td><button class="delete-btn" data-index="${i}"><i class="fas fa-trash"></i></button></td>
-            `;
-            tbody.appendChild(tr);
+            sortData(currentSort.column, currentSort.direction);
+            updateSortIcons();
         }
 
-        document.querySelectorAll('.db-cell').forEach(input => {
-            input.addEventListener('blur', function(e) {
-                const realIndex = parseInt(e.target.dataset.realindex);
-                const field = parseInt(e.target.dataset.field);
-                const newValue = e.target.value;
-                if (database[realIndex] && database[realIndex][field] !== newValue) {
-                    updateEntry(realIndex, field, newValue);
+        function updateSortIcons() {
+            const headers = ['main', 'linked', 'owner', 'type'];
+            headers.forEach(h => {
+                const icon = document.querySelector(`#sort${h.charAt(0).toUpperCase() + h.slice(1)} i`);
+                if (icon) {
+                    if (currentSort.column === h) {
+                        icon.className = currentSort.direction === 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down';
+                    } else {
+                        icon.className = 'fas fa-sort';
+                    }
                 }
             });
-        });
+        }
 
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const index = parseInt(e.target.closest('.delete-btn').dataset.index);
-                deleteEntry(index);
+        function renderDBTable() {
+            const tbody = document.getElementById('dbBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            
+            for (let i = 0; i < filteredData.length; i++) {
+                const row = filteredData[i];
+                const realIndex = database.findIndex((r, idx) => 
+                    r[0] === row[0] && r[1] === row[1]
+                );
+                
+                const typeClass = row[3] === 'INCLUDE' ? 'type-include' : (row[3] === 'A' ? 'type-a' : (row[3] === 'MX' ? 'type-mx' : 'type-default'));
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input type="text" value="${escapeHtml(row[0] || '')}" data-realindex="${realIndex}" data-field="0" class="db-cell"></td>
+                    <td><input type="text" value="${escapeHtml(row[1] || '')}" data-realindex="${realIndex}" data-field="1" class="db-cell"></td>
+                    <td><input type="text" value="${escapeHtml(row[2] || '')}" data-realindex="${realIndex}" data-field="2" class="db-cell"></td>
+                    <td><span class="type-badge ${typeClass}">${escapeHtml(row[3] || '')}</span></td>
+                    <td><button class="delete-btn" data-index="${i}"><i class="fas fa-trash"></i></button></td>
+                `;
+                tbody.appendChild(tr);
+            }
+
+            document.querySelectorAll('.db-cell').forEach(input => {
+                input.addEventListener('blur', function(e) {
+                    const realIndex = parseInt(e.target.dataset.realindex);
+                    const field = parseInt(e.target.dataset.field);
+                    const newValue = e.target.value;
+                    if (database[realIndex] && database[realIndex][field] !== newValue) {
+                        updateEntry(realIndex, field, newValue);
+                    }
+                });
             });
-        });
-    }
 
-    function exportCSV() {
-        let csvContent = "Extern Domain,Intern Domain,Owner,Type\n";
-        for (const row of database) {
-            csvContent += `"${row[0]}","${row[1] || ''}","${row[2] || ''}","${row[3]}"\n`;
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const index = parseInt(e.target.closest('.delete-btn').dataset.index);
+                    deleteEntry(index);
+                });
+            });
         }
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-        link.href = url;
-        link.setAttribute('download', 'spf_database.csv');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        showAlert('CSV exported!', 'success', 'spfResult');
-    }
 
-    function buildMap() {
-        const map = new Map();
-        for (const row of database) map.set(row[0].toLowerCase(), { linked: row[1] || '', type: row[3] || '' });
-        return map;
-    }
-
-    function parseIPs(text) { return text.split('\n').map(ip => ip.trim()).filter(ip => ip.length > 0); }
-
-    function generateSPF(linked, type, ips) {
-        const typeUpper = (type || '').toUpperCase();
-        if (typeUpper === 'A') return `${linked},${linked},TXT,Arecords:${ips.join(';')}`;
-        const ipParts = ips.map(ip => `ip4:${ip}`).join(' ');
-        return `${linked},${linked},TXT,v=spf1 ${ipParts} -all`;
-    }
-
-    function generateSPFRecords() {
-        const domainsText = document.getElementById('domainsInput').value.trim();
-        const ipsText = document.getElementById('ipsInput').value.trim();
-        const resultDiv = document.getElementById('spfResult');
-        if (!domainsText) { resultDiv.innerHTML = '<div class="alert alert-error">Enter domains</div>'; return; }
-        if (!ipsText) { resultDiv.innerHTML = '<div class="alert alert-error">Enter IPs</div>'; return; }
-        const domains = domainsText.split('\n').filter(d => d.trim());
-        const ips = parseIPs(ipsText);
-        const map = buildMap();
-        const outputs = [];
-        const notFound = [];
-        for (const domain of domains) {
-            const clean = domain.trim().toLowerCase();
-            const entry = map.get(clean);
-            if (!entry) { notFound.push(domain.trim()); continue; }
-            if (!entry.linked) continue;
-            outputs.push(generateSPF(entry.linked, entry.type, ips));
+        function exportCSV() {
+            let csvContent = "Extern Domain,Intern Domain,Owner,Type\n";
+            for (const row of database) {
+                csvContent += `"${row[0]}","${row[1] || ''}","${row[2] || ''}","${row[3]}"\n`;
+            }
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.href = url;
+            link.setAttribute('download', 'spf_database.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            showAlert('CSV exported!', 'success', 'spfResult');
         }
-        let html = '';
-        if (outputs.length) html += `<div class="result-box"><pre>${escapeHtml(outputs.join('\n'))}</pre></div><div class="alert alert-success">✅ Generated ${outputs.length} records</div>`;
-        if (notFound.length) html += `<div class="alert alert-error">❌ Not found: ${notFound.join(', ')}</div>`;
-        resultDiv.innerHTML = html;
-    }
 
-    // MODIFIED: Removed alert, button shows "Copied!" temporarily
-    function copySPF() { 
-        const output = document.querySelector('#spfResult pre'); 
-        const btn = document.getElementById('copySpfBtn');
-        if (output && output.innerText.trim()) { 
-            navigator.clipboard.writeText(output.innerText); 
-            const originalHtml = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            setTimeout(() => { btn.innerHTML = originalHtml; }, 1500);
-        } else { 
-            const originalHtml = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-times"></i> No Data';
-            setTimeout(() => { btn.innerHTML = originalHtml; }, 1200);
-        } 
-    }
-
-    function clearSPF() { document.getElementById('domainsInput').value = ''; document.getElementById('ipsInput').value = ''; document.getElementById('spfResult').innerHTML = ''; }
-
-    function searchDomain() {
-        const searchTerm = document.getElementById('searchDomain').value.trim().toLowerCase();
-        const resultDiv = document.getElementById('searchResult');
-        
-        if (!searchTerm) {
-            resultDiv.innerHTML = '<div class="alert alert-error">Enter a domain to search</div>';
-            return;
+        function buildMap() {
+            const map = new Map();
+            for (const row of database) map.set(row[0].toLowerCase(), { linked: row[1] || '', type: row[3] || '' });
+            return map;
         }
-        
-        const asMain = database.find(row => row[0].toLowerCase() === searchTerm);
-        const asLinked = database.filter(row => row[1] && row[1].toLowerCase() === searchTerm);
-        
-        if (!asMain && asLinked.length === 0) {
-            resultDiv.innerHTML = `
-                <div class="lookup-card" style="text-align:center">
-                    <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.4;"></i><br>
-                    <strong>Not Found</strong><br>
-                    "${escapeHtml(searchTerm)}" was not found in the database.
-                </div>
-            `;
-            return;
+
+        function parseIPs(text) { return text.split('\n').map(ip => ip.trim()).filter(ip => ip.length > 0); }
+
+        function generateSPF(linked, type, ips) {
+            const typeUpper = (type || '').toUpperCase();
+            if (typeUpper === 'A') return `${linked},${linked},TXT,Arecords:${ips.join(';')}`;
+            const ipParts = ips.map(ip => `ip4:${ip}`).join(' ');
+            return `${linked},${linked},TXT,v=spf1 ${ipParts} -all`;
         }
-        
-        let html = `<div class="lookup-card">`;
-        
-        if (asMain) {
-            const badgeClass = asMain[3] === 'INCLUDE' ? 'lookup-badge-include' : (asMain[3] === 'A' ? 'lookup-badge-a' : 'lookup-badge-mx');
-            html += `
-                <div style="margin-bottom: 20px;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                        <span style="background: #3b82f6; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-arrow-right"></i> Extern Domain</span>
+
+        function generateSPFRecords() {
+            const domainsText = document.getElementById('domainsInput').value.trim();
+            const ipsText = document.getElementById('ipsInput').value.trim();
+            const resultDiv = document.getElementById('spfResult');
+            if (!domainsText) { resultDiv.innerHTML = '<div class="alert alert-error">Enter domains</div>'; return; }
+            if (!ipsText) { resultDiv.innerHTML = '<div class="alert alert-error">Enter IPs</div>'; return; }
+            const domains = domainsText.split('\n').filter(d => d.trim());
+            const ips = parseIPs(ipsText);
+            const map = buildMap();
+            const outputs = [];
+            const notFound = [];
+            for (const domain of domains) {
+                const clean = domain.trim().toLowerCase();
+                const entry = map.get(clean);
+                if (!entry) { notFound.push(domain.trim()); continue; }
+                if (!entry.linked) continue;
+                outputs.push(generateSPF(entry.linked, entry.type, ips));
+            }
+            let html = '';
+            if (outputs.length) html += `<div class="result-box"><pre>${escapeHtml(outputs.join('\n'))}</pre></div><div class="alert alert-success">✅ Generated ${outputs.length} records</div>`;
+            if (notFound.length) html += `<div class="alert alert-error">❌ Not found: ${notFound.join(', ')}</div>`;
+            resultDiv.innerHTML = html;
+        }
+
+        // MODIFIED: Removed alert, button shows "Copied!" temporarily
+        function copySPF() { 
+            const output = document.querySelector('#spfResult pre'); 
+            const btn = document.getElementById('copySpfBtn');
+            if (output && output.innerText.trim()) { 
+                navigator.clipboard.writeText(output.innerText); 
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => { btn.innerHTML = originalHtml; }, 1500);
+            } else { 
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-times"></i> No Data';
+                setTimeout(() => { btn.innerHTML = originalHtml; }, 1200);
+            } 
+        }
+
+        function clearSPF() { document.getElementById('domainsInput').value = ''; document.getElementById('ipsInput').value = ''; document.getElementById('spfResult').innerHTML = ''; }
+
+        function searchDomain() {
+            const searchTerm = document.getElementById('searchDomain').value.trim().toLowerCase();
+            const resultDiv = document.getElementById('searchResult');
+            
+            if (!searchTerm) {
+                resultDiv.innerHTML = '<div class="alert alert-error">Enter a domain to search</div>';
+                return;
+            }
+            
+            const asMain = database.find(row => row[0].toLowerCase() === searchTerm);
+            const asLinked = database.filter(row => row[1] && row[1].toLowerCase() === searchTerm);
+            
+            if (!asMain && asLinked.length === 0) {
+                resultDiv.innerHTML = `
+                    <div class="lookup-card" style="text-align:center">
+                        <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.4;"></i><br>
+                        <strong>Not Found</strong><br>
+                        "${escapeHtml(searchTerm)}" was not found in the database.
                     </div>
-                    <div style="background: white; border-radius: 16px; padding: 20px;">
-                        <div style="font-family: monospace; font-weight: 700; font-size: 1.1rem; margin-bottom: 16px; color: #0f172a;">${escapeHtml(asMain[0])}</div>
-                        <div style="margin-top: 8px;"><strong>→ Intern Domain:</strong> <span style="font-family: monospace;">${asMain[1] ? escapeHtml(asMain[1]) : '<span class="lookup-empty">(empty)</span>'}</span></div>
-                        <div style="margin-top: 8px;"><strong>→ Owner:</strong> ${asMain[2] ? escapeHtml(asMain[2]) : '<span class="lookup-empty">(empty)</span>'}</div>
-                        <div style="margin-top: 8px;"><strong>→ Type:</strong> <span class="lookup-badge ${badgeClass}" style="margin-left: 8px;">${escapeHtml(asMain[3])}</span></div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        if (asLinked.length > 0) {
-            html += `
-                <div>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                        <span style="background: #8b5cf6; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-link"></i> Intern Domain (${asLinked.length})</span>
-                    </div>
-            `;
-            for (const match of asLinked) {
-                const badgeClass = match[3] === 'INCLUDE' ? 'lookup-badge-include' : (match[3] === 'A' ? 'lookup-badge-a' : 'lookup-badge-mx');
+                `;
+                return;
+            }
+            
+            let html = `<div class="lookup-card">`;
+            
+            if (asMain) {
+                const badgeClass = asMain[3] === 'INCLUDE' ? 'lookup-badge-include' : (asMain[3] === 'A' ? 'lookup-badge-a' : 'lookup-badge-mx');
                 html += `
-                    <div style="background: white; border-radius: 16px; padding: 20px; margin-bottom: 12px;">
-                        <div style="font-family: monospace; font-weight: 700; font-size: 1rem; margin-bottom: 16px; color: #0f172a;">${escapeHtml(match[0])}</div>
-                        <div style="margin-top: 8px;"><strong>→ Extern Domain:</strong> <span style="font-family: monospace;">${escapeHtml(match[0])}</span></div>
-                        <div style="margin-top: 8px;"><strong>→ Owner:</strong> ${match[2] ? escapeHtml(match[2]) : '<span class="lookup-empty">(empty)</span>'}</div>
-                        <div style="margin-top: 8px;"><strong>→ Type:</strong> <span class="lookup-badge ${badgeClass}" style="margin-left: 8px;">${escapeHtml(match[3])}</span></div>
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                            <span style="background: #3b82f6; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-arrow-right"></i> Extern Domain</span>
+                        </div>
+                        <div style="background: white; border-radius: 16px; padding: 20px;">
+                            <div style="font-family: monospace; font-weight: 700; font-size: 1.1rem; margin-bottom: 16px; color: #0f172a;">${escapeHtml(asMain[0])}</div>
+                            <div style="margin-top: 8px;"><strong>→ Intern Domain:</strong> <span style="font-family: monospace;">${asMain[1] ? escapeHtml(asMain[1]) : '<span class="lookup-empty">(empty)</span>'}</span></div>
+                            <div style="margin-top: 8px;"><strong>→ Owner:</strong> ${asMain[2] ? escapeHtml(asMain[2]) : '<span class="lookup-empty">(empty)</span>'}</div>
+                            <div style="margin-top: 8px;"><strong>→ Type:</strong> <span class="lookup-badge ${badgeClass}" style="margin-left: 8px;">${escapeHtml(asMain[3])}</span></div>
+                        </div>
                     </div>
                 `;
             }
+            
+            if (asLinked.length > 0) {
+                html += `
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                            <span style="background: #8b5cf6; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-link"></i> Intern Domain (${asLinked.length})</span>
+                        </div>
+                `;
+                for (const match of asLinked) {
+                    const badgeClass = match[3] === 'INCLUDE' ? 'lookup-badge-include' : (match[3] === 'A' ? 'lookup-badge-a' : 'lookup-badge-mx');
+                    html += `
+                        <div style="background: white; border-radius: 16px; padding: 20px; margin-bottom: 12px;">
+                            <div style="font-family: monospace; font-weight: 700; font-size: 1rem; margin-bottom: 16px; color: #0f172a;">${escapeHtml(match[0])}</div>
+                            <div style="margin-top: 8px;"><strong>→ Extern Domain:</strong> <span style="font-family: monospace;">${escapeHtml(match[0])}</span></div>
+                            <div style="margin-top: 8px;"><strong>→ Owner:</strong> ${match[2] ? escapeHtml(match[2]) : '<span class="lookup-empty">(empty)</span>'}</div>
+                            <div style="margin-top: 8px;"><strong>→ Type:</strong> <span class="lookup-badge ${badgeClass}" style="margin-left: 8px;">${escapeHtml(match[3])}</span></div>
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+            }
+            
             html += `</div>`;
+            resultDiv.innerHTML = html;
         }
-        
-        html += `</div>`;
-        resultDiv.innerHTML = html;
-    }
 
-    function clearSearch() {
-        document.getElementById('searchDomain').value = '';
-        document.getElementById('searchResult').innerHTML = '';
-    }
-
-    function parseBulkData(text, replaceMode) {
-        const lines = text.split('\n');
-        const newEntries = [];
-        const errors = [];
-        for (let i = 0; i < lines.length; i++) {
-            let line = lines[i];
-            if (!line.trim()) continue;
-            let parts = line.split('\t');
-            while (parts.length > 0 && parts[parts.length - 1] === '') parts.pop();
-            if (parts.length < 1) { errors.push(`Line ${i+1}: No data`); continue; }
-            const mainDomain = parts[0] ? parts[0].trim() : '';
-            const linkedDomain = parts.length > 1 ? parts[1].trim() : '';
-            const owner = parts.length > 2 ? parts[2].trim() : '';
-            const type = parts.length > 3 ? parts[3].trim() : '';
-            if (!mainDomain) { errors.push(`Line ${i+1}: Missing extern domain`); continue; }
-            newEntries.push([mainDomain, linkedDomain, owner, type]);
+        function clearSearch() {
+            document.getElementById('searchDomain').value = '';
+            document.getElementById('searchResult').innerHTML = '';
         }
-        if (replaceMode) {
-            database = newEntries;
-        } else {
-            const existingMap = new Map();
-            for (const entry of database) existingMap.set(entry[0].toLowerCase(), true);
-            for (const entry of newEntries) {
-                if (!existingMap.has(entry[0].toLowerCase())) {
-                    database.push(entry);
-                    existingMap.set(entry[0].toLowerCase(), true);
+
+        // ========== FIXED BULK IMPORT FUNCTION ==========
+        function parseBulkData(text, replaceMode) {
+            const lines = text.split('\n');
+            const newEntries = [];
+            const errors = [];
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i].trim();
+                if (!line) continue;
+                
+                // Split by tab only
+                let parts = line.split('\t');
+                
+                // Clean up parts - remove empty strings at the end
+                while (parts.length > 0 && parts[parts.length - 1] === '') parts.pop();
+                
+                if (parts.length < 4) {
+                    errors.push(`Line ${i+1}: Need 4 columns (Extern, Intern, Owner, Type). Found ${parts.length} columns.`);
+                    continue;
+                }
+                
+                const mainDomain = parts[0] ? parts[0].trim() : '';
+                const linkedDomain = parts[1] ? parts[1].trim() : '';
+                const owner = parts[2] ? parts[2].trim() : '';
+                const type = parts[3] ? parts[3].trim().toUpperCase() : 'INCLUDE';
+                
+                if (!mainDomain) {
+                    errors.push(`Line ${i+1}: Missing extern domain`);
+                    continue;
+                }
+                
+                // Validate type
+                const validTypes = ['INCLUDE', 'A', 'MX'];
+                const finalType = validTypes.includes(type) ? type : 'INCLUDE';
+                
+                newEntries.push([mainDomain, linkedDomain, owner, finalType]);
+            }
+            
+            if (replaceMode) {
+                database = newEntries;
+            } else {
+                const existingMap = new Map();
+                for (const entry of database) existingMap.set(entry[0].toLowerCase(), true);
+                for (const entry of newEntries) {
+                    if (!existingMap.has(entry[0].toLowerCase())) {
+                        database.push(entry);
+                        existingMap.set(entry[0].toLowerCase(), true);
+                    } else {
+                        errors.push(`Duplicate extern domain skipped: ${entry[0]}`);
+                    }
                 }
             }
+            
+            filteredData = [...database];
+            renderDBTable();
+            updateSuggestions();
+            updateStats();
+            return { added: newEntries.length, errors: errors };
         }
-        filteredData = [...database];
-        renderDBTable();
-        updateSuggestions();
-        updateStats();
-        return { added: newEntries.length, errors: errors };
-    }
 
-    function bulkImport(replaceMode) {
-        const bulkText = document.getElementById('bulkData').value;
-        if (!bulkText.trim()) { document.getElementById('bulkResult').innerHTML = '<div class="alert alert-error">Paste data first</div>'; return; }
-        const result = parseBulkData(bulkText, replaceMode);
-        let html = '';
-        if (result.added > 0) html += `<div class="alert alert-success">✅ ${result.added} entries ${replaceMode ? 'imported' : 'merged'}!</div>`;
-        if (result.errors.length > 0) html += `<div class="alert alert-error">${result.errors.join('<br>')}</div>`;
-        if (result.added === 0 && result.errors.length === 0) html += `<div class="alert alert-error">No valid entries</div>`;
-        document.getElementById('bulkResult').innerHTML = html;
-        if (result.added > 0) saveDB();
-    }
+        function bulkImport(replaceMode) {
+            const bulkText = document.getElementById('bulkData').value;
+            if (!bulkText.trim()) { document.getElementById('bulkResult').innerHTML = '<div class="alert alert-error">Paste data first</div>'; return; }
+            const result = parseBulkData(bulkText, replaceMode);
+            let html = '';
+            if (result.added > 0) html += `<div class="alert alert-success">✅ ${result.added} entries ${replaceMode ? 'imported' : 'merged'}!</div>`;
+            if (result.errors.length > 0) html += `<div class="alert alert-error">${result.errors.join('<br>')}</div>`;
+            if (result.added === 0 && result.errors.length === 0) html += `<div class="alert alert-error">No valid entries</div>`;
+            document.getElementById('bulkResult').innerHTML = html;
+            if (result.added > 0) saveDB();
+        }
 
-    function clearBulk() { document.getElementById('bulkData').value = ''; document.getElementById('bulkResult').innerHTML = ''; }
+        function clearBulk() { document.getElementById('bulkData').value = ''; document.getElementById('bulkResult').innerHTML = ''; }
 
-    function showAlert(message, type, containerId) {
-        const container = containerId ? document.getElementById(containerId) : document.getElementById('spfResult');
-        if (!container) return;
-        container.innerHTML = `<div class="alert alert-${type}"><i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i> ${message}</div>`;
-        setTimeout(() => { if (container) container.innerHTML = ''; }, 3000);
-    }
+        function showAlert(message, type, containerId) {
+            const container = containerId ? document.getElementById(containerId) : document.getElementById('spfResult');
+            if (!container) return;
+            container.innerHTML = `<div class="alert alert-${type}"><i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i> ${message}</div>`;
+            setTimeout(() => { if (container) container.innerHTML = ''; }, 3000);
+        }
 
-    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')); }
+        function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')); }
 
-    function switchTool(toolId) {
-        document.getElementById('spfTool').classList.add('hidden');
-        document.getElementById('lookupTool').classList.add('hidden');
-        document.getElementById('databaseTool').classList.add('hidden');
-        document.getElementById('bulkTool').classList.add('hidden');
-        document.getElementById(toolId + 'Tool').classList.remove('hidden');
+        function switchTool(toolId) {
+            document.getElementById('spfTool').classList.add('hidden');
+            document.getElementById('lookupTool').classList.add('hidden');
+            document.getElementById('databaseTool').classList.add('hidden');
+            document.getElementById('bulkTool').classList.add('hidden');
+            document.getElementById(toolId + 'Tool').classList.remove('hidden');
+            document.querySelectorAll('.tool-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.tool === toolId) btn.classList.add('active');
+            });
+        }
+
         document.querySelectorAll('.tool-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.dataset.tool === toolId) btn.classList.add('active');
+            btn.addEventListener('click', () => switchTool(btn.dataset.tool));
         });
-    }
 
-    document.querySelectorAll('.tool-btn').forEach(btn => {
-        btn.addEventListener('click', () => switchTool(btn.dataset.tool));
-    });
+        document.getElementById('generateBtn')?.addEventListener('click', generateSPFRecords);
+        document.getElementById('clearSpfBtn')?.addEventListener('click', clearSPF);
+        document.getElementById('copySpfBtn')?.addEventListener('click', copySPF);
+        document.getElementById('searchBtn')?.addEventListener('click', searchDomain);
+        document.getElementById('clearSearchBtn')?.addEventListener('click', clearSearch);
+        document.getElementById('addEntryBtn')?.addEventListener('click', addEntry);
+        document.getElementById('saveDbBtn')?.addEventListener('click', saveDB);
+        document.getElementById('resetDbBtn')?.addEventListener('click', resetDB);
+        document.getElementById('exportCsvBtn')?.addEventListener('click', exportCSV);
+        document.getElementById('applyFiltersBtn')?.addEventListener('click', applyFilters);
+        document.getElementById('clearFiltersBtn')?.addEventListener('click', clearFilters);
+        document.getElementById('bulkImportBtn')?.addEventListener('click', () => bulkImport(true));
+        document.getElementById('bulkMergeBtn')?.addEventListener('click', () => bulkImport(false));
+        document.getElementById('bulkClearBtn')?.addEventListener('click', clearBulk);
+        document.getElementById('searchDomain')?.addEventListener('keypress', e => { if (e.key === 'Enter') searchDomain(); });
+        
+        document.getElementById('sortMain')?.addEventListener('click', () => handleSort('main'));
+        document.getElementById('sortLinked')?.addEventListener('click', () => handleSort('linked'));
+        document.getElementById('sortOwner')?.addEventListener('click', () => handleSort('owner'));
+        document.getElementById('sortType')?.addEventListener('click', () => handleSort('type'));
 
-    document.getElementById('generateBtn')?.addEventListener('click', generateSPFRecords);
-    document.getElementById('clearSpfBtn')?.addEventListener('click', clearSPF);
-    document.getElementById('copySpfBtn')?.addEventListener('click', copySPF);
-    document.getElementById('searchBtn')?.addEventListener('click', searchDomain);
-    document.getElementById('clearSearchBtn')?.addEventListener('click', clearSearch);
-    document.getElementById('addEntryBtn')?.addEventListener('click', addEntry);
-    document.getElementById('saveDbBtn')?.addEventListener('click', saveDB);
-    document.getElementById('resetDbBtn')?.addEventListener('click', resetDB);
-    document.getElementById('exportCsvBtn')?.addEventListener('click', exportCSV);
-    document.getElementById('applyFiltersBtn')?.addEventListener('click', applyFilters);
-    document.getElementById('clearFiltersBtn')?.addEventListener('click', clearFilters);
-    document.getElementById('bulkImportBtn')?.addEventListener('click', () => bulkImport(true));
-    document.getElementById('bulkMergeBtn')?.addEventListener('click', () => bulkImport(false));
-    document.getElementById('bulkClearBtn')?.addEventListener('click', clearBulk);
-    document.getElementById('searchDomain')?.addEventListener('keypress', e => { if (e.key === 'Enter') searchDomain(); });
-    
-    document.getElementById('sortMain')?.addEventListener('click', () => handleSort('main'));
-    document.getElementById('sortLinked')?.addEventListener('click', () => handleSort('linked'));
-    document.getElementById('sortOwner')?.addEventListener('click', () => handleSort('owner'));
-    document.getElementById('sortType')?.addEventListener('click', () => handleSort('type'));
-
-    loadDB();
-</script>
+        loadDB();
+    </script>
 </body>
 </html>
